@@ -134,7 +134,7 @@ const main = async () => {
       args: ["--no-sandbox"],
       executablePath: fs.existsSync("/usr/bin/chromium")
         ? "/usr/bin/chromium"
-        : undefined,
+        : "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
     });
 
     const page = await browser.newPage();
@@ -228,8 +228,12 @@ const main = async () => {
       await delay(7000);
       try {
         const signedinButton = await page.$(".code-calender .signedin");
-        const username = await page.$(".user-info .name");
+        const usernameDom = await page.$(".user-info .name");
+        const username = await usernameDom?.evaluate((el) => el.textContent);
+
         if (signedinButton) {
+          console.log(username);
+
           console.log(username + "： 已签到，无需重复签到");
           alreadySignedIn = true;
         } else {
