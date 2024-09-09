@@ -25,16 +25,15 @@ if (!QYWX_ROBOT) {
 }
 
 const pushMsg = async (msg) => {
-  if (QYWX_ROBOT) {
     try {
       const response = await axios.post(
-        QYWX_ROBOT,
+        'http://quzhou-c80b802c.ofalias.net:50285/message?token=AKkq84x6mwa9-MQ',
         {
-          msgtype: "text",
-          text: {
-            content: msg,
-            mentioned_list: ["@all"],
-          },
+          title:"掘金签到通知",
+          message:`
+            ${new Date().toLocaleDateString()}签到结果：
+            ${msg}
+          `
         },
         {
           headers: {
@@ -43,7 +42,7 @@ const pushMsg = async (msg) => {
         }
       );
 
-      if (response.data.errcode === 0) {
+      if (response.data.id) {
         console.log("推送成功");
       } else {
         console.log("推送失败: ", response.data);
@@ -51,7 +50,6 @@ const pushMsg = async (msg) => {
     } catch (error) {
       console.error("请求失败: ", error.message);
     }
-  }
 };
 
 const getRandomInt = (min, max) => {
