@@ -27,7 +27,7 @@ if (!QYWX_ROBOT) {
 const pushMsg = async (msg) => {
     try {
       const response = await axios.post(
-        'http://quzhou-c80b802c.ofalias.net:50285/message?token=AKkq84x6mwa9-MQ',
+        'https://gotify.1125089.xyz/message?token=AKkq84x6mwa9-MQ',
         {
           title:"掘金签到通知",
           message:`
