@@ -30,6 +30,7 @@ const pushMsg = async (msg) => {
         'https://gotify.1125089.xyz/message?token=AKkq84x6mwa9-MQ',
         {
           title:"掘金签到通知",
+          "priority": 5,
           message:`
             ${new Date().toLocaleDateString()}签到结果：
             ${msg}
