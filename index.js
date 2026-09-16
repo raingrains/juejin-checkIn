@@ -250,11 +250,11 @@ const main = async () => {
           }
         }
 
-        await page.waitForSelector(".header-text > .figure-text");
-        const figureText = await page.$(".header-text > .figure-text");
-        point =
-          (await page.evaluate((el) => el && el.textContent, figureText)) ||
-          point;
+        // await page.waitForSelector(".header-text > .figure-text");
+        // const figureText = await page.$(".header-text > .figure-text");
+        // point =
+        //   (await page.evaluate((el) => el && el.textContent, figureText)) ||
+        //   point;
       } catch (e) {
         console.log("发生错误，无法完成签到或获取积分信息");
       }
